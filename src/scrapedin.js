@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer')
 const login = require('./login')
 const profile = require('./profile/profile')
+const company = require('./company/company')
 const logger = require('./logger')(__filename)
 
 module.exports = async ({ cookies, email, password, isHeadless, hasToLog, hasToGetContactInfo, puppeteerArgs, puppeteerAuthenticate } = { isHeadless: true, hasToLog: false }) => {
@@ -27,5 +28,6 @@ module.exports = async ({ cookies, email, password, isHeadless, hasToLog, hasToG
     logger.warn('email/password and cookies wasn\'t provided, only public data will be collected')
   }
 
-  return (url, waitMs) => profile(browser, cookies, url, waitMs, hasToGetContactInfo, puppeteerAuthenticate)
+  // return (url, waitMs) => profile(browser, cookies, url, waitMs, hasToGetContactInfo, puppeteerAuthenticate)
+  return (url, waitMs) => company(browser, cookies, url, waitMs, hasToGetContactInfo, puppeteerAuthenticate)
 }
